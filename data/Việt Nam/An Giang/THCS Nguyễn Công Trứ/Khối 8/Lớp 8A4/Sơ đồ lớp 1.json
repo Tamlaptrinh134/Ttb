@@ -1,0 +1,19 @@
+{
+    "title": "Sơ đồ lớp 1",
+    "homeroomteacher": "Nguyễn Trung Được",
+    "school": "THCS Nguyễn Công Trứ",
+    "class": "8A4",
+    "subject": "#All",
+    "totalstudents": 40,
+    "liststudents": [
+        "Long",
+        "My",
+        "Vy",
+        "Như",
+        "Hào",
+        "Khang",
+        "Phước", 
+        "Quyên",
+        "Trân"
+    ]
+}
