@@ -4,23 +4,28 @@
         <title>Laucher Ttb</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="../../css/style.css">
     </head>
     <body>
         <header>
-            <h1 id="title">Laucher Ttb</h1>
+            <h1 id="title"></h1>
         </header>
         <hr/>
         <main>
-            <div> <input id="boxsearch" type="search" placeholder="Search for type"> </div>
-            <div id="container">
-               
-            </div>
+            <canvas id="canvas"></canvas>
         </main>
         <hr/>
         <footer>
             <p>© 2025 Laucher Ttb by Đặng Nhân Tâm</p>
         </footer>
-        <script src="code/lauchercode.js"></script>
+        <?php
+			if (isset($_GET["path"])) {
+				$receviepath = $_GET["path"];
+			}
+		?>
+        <script>
+        	var receviepath = "<?php echo $receviepath; ?>"
+        	alert(receviepath);
+        </script>
     </body>
 </html>

@@ -1,8 +1,10 @@
 const container = document.getElementById("container");
 var path = "data"
+var datajson
 function new_path(newpath){
     console.log(newpath);
     if (newpath.split('.').length === 2) { 
+        window.location.assign(`sub/board?path=${path}/${newpath}`);
     } else {
         if (newpath === "..") {
             if (path.includes("/")) {
@@ -33,6 +35,6 @@ function dir_path() {
                 container.innerHTML += `<div class="box"><button class="boxbutton" onclick="new_path('${encodeURIComponent(element)}')")>${element}</button></div>`;
             })
         })
-        .catch(error => console.error("Lỗi:", error));
+        .catch(error => console.error("Error:", error));
 }
 dir_path();
