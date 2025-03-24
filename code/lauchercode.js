@@ -1,16 +1,18 @@
 const container = document.getElementById("container");
 var path = "data"
 function new_path(newpath){
-    if (newpath == "..") {
-        if (path.includes("/")) {
-            path = path.slice(0, path.lastIndexOf("/"));
-        } else {
-            path = "data";
-        };
+    console.log(newpath);
+    if (newpath.split('.').length === 2) { 
     } else {
-        path = `${path}/${newpath}`
-    }
-    if (path.indexOf('.') === -1){
+        if (newpath === "..") {
+            if (path.includes("/")) {
+                path = path.slice(0, path.lastIndexOf("/"));
+            } else {
+                path = "data";
+            };
+        } else {
+            path = `${path}/${newpath}`
+        }
         dir_path();
     }
 }
@@ -25,9 +27,12 @@ function dir_path() {
             }
             container.innerHTML = "";
             listfolder.forEach(element => {
-                container.innerHTML += `<div class="box"><button onclick="new_path('${encodeURIComponent(element)}')")>${element}</button></div>`;
+                if (element === "..") {
+                    element = ".."
+                };
+                container.innerHTML += `<div class="box"><button class="boxbutton" onclick="new_path('${encodeURIComponent(element)}')")>${element}</button></div>`;
             })
         })
         .catch(error => console.error("Lỗi:", error));
-    }
+}
 dir_path();

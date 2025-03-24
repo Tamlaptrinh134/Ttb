@@ -1,3 +1,51 @@
+body {
+    margin: 0px;
+    background-color: #1b1f21;
+    color: white;
+    font-family: "Patrick Hand", cursive;
+}
+main {
+    margin: 2px;
+}
+footer {
+    margin: 2px;
+}
+#title {
+    color: #00b8e6;
+    text-shadow: #00b8e6 0px 0px 10px;
+}
 #container {
-    display: flex;
+    display: block;
+}
+#boxsearch {
+    display: inline-block;
+    width: 100%;
+    max-width: 70vh;
+    background-color: #1b1f21;
+    font-family: "Patrick Hand", cursive;
+    font-size: medium;
+    border: 1px #00e600 solid;
+    color: white;
+    outline: none;
+    text-shadow: white 0px 0px 10px;
+    box-shadow: #00e600 0px 0px 10px;
+}
+.box {
+    display: inline-block;
+    margin-inline: 2px;
+    margin-block: 5px;
+    border: 1px #00e600 solid;
+}
+.boxbutton {
+    background-color: #1b1f21;
+    font-family: "Patrick Hand", cursive;
+    font-size: larger;
+    color: white;
+    border: 0px #00e600 solid;
+    text-shadow: white 0px 0px 10px;
+    box-shadow: #00e600 0px 0px 10px;
+}
+.boxbutton:hover {
+    background-color: #00e600;
+    color: #1b1f21;
 }
