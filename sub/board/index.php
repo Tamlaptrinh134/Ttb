@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../../css/style.css">
+        <link rel="stylesheet" type="text/css" href="board/style.css">
     </head>
     <body>
         <header>
@@ -12,7 +13,7 @@
         </header>
         <hr/>
         <main>
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas" style="background-color: black"></canvas>
         </main>
         <hr/>
         <footer>
@@ -25,7 +26,8 @@
 		?>
         <script>
         	var receviepath = "<?php echo $receviepath; ?>"
-        	alert(receviepath);
+        	//alert(receviepath);
         </script>
+        <script src="board/code.js"></script>
     </body>
 </html>
