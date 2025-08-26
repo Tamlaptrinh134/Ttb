@@ -25,13 +25,16 @@ var datarandomtype = {
     "randomnumberid": {
         "name": "Random Number Id",
         "icon": "board/RandomNumberId.gif",
-        "randomIndex": randomInt(0, datafile ? datafile.liststudents.length : 1)
+        "randomIndex": randomInt(0, datafile ? datafile.liststudents.length : 1),
+        "tickgrow": 1,
     },
     "classdiagram": {
         "name": "Class Diagram Random",
         "icon": "board/ClassDiagram.gif"
     }
 };
+//Sounds
+const rollSound = new Audio("../source/roll.mp3");
 fetch(`../readfile.php?path=${receviepath}`)
     .then(response => response.json()) 
     .then(data => {
@@ -83,6 +86,12 @@ function ButtonClassDiagram() {
     typeofrandom = "classdiagram";
     menuDiv.style.display = "none";
 }
+//Event listenerss
+document.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
+        status = "started";
+    }
+});
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     switch (typeofrandom) {
@@ -92,7 +101,6 @@ function draw() {
             gradient.addColorStop(1, "#a8e063");  // xanh lá tươi sáng
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             sparkleLeaves.forEach(p => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
@@ -108,20 +116,70 @@ function draw() {
         case "randomnumberid":
             if (datafile) {
                 const studentIndex = datarandomtype.randomnumberid.randomIndex;
-                console.log(studentIndex);
+                //console.log(studentIndex);
                 ctx.fillStyle = "black";
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
+                if (status === "done") {
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, "#56ab2f");  // xanh lá nhạt
+                    gradient.addColorStop(1, "#a8e063");  // xanh lá tươi sáng
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    if (tick % 360 === 0) {
+                        status = "paused";
+                    }
+                } else if (status === "paused") {
+                    sparkleLeaves.forEach(p => {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
+                        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+                        ctx.fill();
+                        p.x += p.speed;
+                        if (p.x > canvas.width) {
+                            p.x = -10;
+                            p.y = Math.random() * canvas.height;
+                        }
+                    });
+                    ctx.font = "20px Arial Italic";
+                    ctx.fillText("[Nhấn phím cách để bắt đầu]", canvas.centerPosition.x, canvas.centerPosition.y + 90);
+                    ctx.font = "15px Arial";
+                    ctx.fillText(`${Math.round(1/datafile.liststudents.length*100)}% Bạn sẽ trả bài`, canvas.centerPosition.x, canvas.centerPosition.y + 120);
+                    if (tick % 20 == 0) {
+                        datarandomtype.randomnumberid.randomIndex = randomInt(0, datafile.liststudents.length);
+                    };
+                } else if (status === "started") {
+                    sparkleLeaves.forEach(p => {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
+                        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+                        ctx.fill();
+                        p.x += 0.3 + Math.random() * 3;
+                        if (p.x > canvas.width) {
+                            p.x = -10;
+                            p.y = Math.random() * canvas.height;
+                        }
+                    });
+                    if (tick % datarandomtype.randomnumberid.tickgrow == 0) {
+                        if (datarandomtype.randomnumberid.tickgrow < 90) {
+                            //rollSound.pause();
+                            //rollSound.currentTime = 0; 
+                            datarandomtype.randomnumberid.randomIndex = randomInt(0, datafile.liststudents.length);
+                            rollSound.play();
+                            datarandomtype.randomnumberid.tickgrow += 1;
+                            console.log(datarandomtype.randomnumberid.tickgrow);
+                        } else {
+                            status = "done";
+                            datarandomtype.randomnumberid.tickgrow = 1;
+                        };
+                    };
+                     
+                };
                 ctx.fillStyle = "white";
                 ctx.font = "100px Arial";
                 ctx.textAlign = "center";
                 ctx.fillText(`${studentIndex}`, canvas.centerPosition.x, canvas.centerPosition.y - 50);
-                ctx.fillStyle = "white";
                 ctx.font = "70px Arial";
-                ctx.textAlign = "center";
                 ctx.fillText(`${datafile.liststudents[studentIndex]}`, canvas.centerPosition.x, canvas.centerPosition.y + 50);
-                if (tick % 1 === 0) {
-                    datarandomtype.randomnumberid.randomIndex = randomInt(0, datafile.liststudents.length);
-                }
             } else {
                 ctx.fillStyle = "red";
                 ctx.font = "40px Arial";
