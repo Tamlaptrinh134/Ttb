@@ -49,3 +49,10 @@ footer {
     background-color: #00e600;
     color: #1b1f21;
 }
+h2, h3, h4, h5, h6 {
+    margin-block: 2px;
+}
+center {
+    display: flex;
+    justify-content: center;
+}
