@@ -125,7 +125,7 @@ function draw() {
                     gradient.addColorStop(1, "#a8e063");  // xanh lá tươi sáng
                     ctx.fillStyle = gradient;
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    if (tick % 360 === 0) {
+                    if (tick % 600 === 0) {
                         status = "paused";
                     }
                 } else if (status === "paused") {
@@ -160,12 +160,12 @@ function draw() {
                         }
                     });
                     if (tick % datarandomtype.randomnumberid.tickgrow == 0) {
-                        if (datarandomtype.randomnumberid.tickgrow < 90) {
+                        if (datarandomtype.randomnumberid.tickgrow < 60) {
                             //rollSound.pause();
                             //rollSound.currentTime = 0; 
                             datarandomtype.randomnumberid.randomIndex = randomInt(0, datafile.liststudents.length);
                             rollSound.play();
-                            datarandomtype.randomnumberid.tickgrow += 1;
+                            datarandomtype.randomnumberid.tickgrow += 5;
                             console.log(datarandomtype.randomnumberid.tickgrow);
                         } else {
                             status = "done";
