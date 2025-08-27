@@ -35,7 +35,7 @@ var datarandomtype = {
 };
 //Sounds
 const rollSound = new Audio("../source/roll.mp3");
-fetch(`../readfile.php?path=${receviepath}`)
+fetch(`../../readfile.php?path=${receviepath}`)
     .then(response => response.json()) 
     .then(data => {
         datafile = data;
