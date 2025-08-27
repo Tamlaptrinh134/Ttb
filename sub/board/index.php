@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../../css/style.css">
-        <link rel="stylesheet" type="text/css" href="board/style.css">
+        <link rel="stylesheet" type="text/css" href="./style.css">
     </head>
     <body>
         <header>
@@ -17,15 +17,15 @@
             <div id="menu">
                 <h1>Loại Ngẫu Nhiên: </h1>
                 <button class="boxbutton center" id="button-lk-spin" >
-                    <img src="board/LuckySpin.gif" alt="LuckySpin" class="icon">
+                    <img src="./LuckySpin.gif" alt="LuckySpin" class="icon">
                     <h3>Vòng Xoay</h3>
                 </button>
                 <button class="boxbutton center" id="button-rd-number-id" onclick="ButtonRandomNumberId()">
-                    <img src="board/RandomNumberId.gif" alt="RandomNumberId" class="icon">
+                    <img src="./RandomNumberId.gif" alt="RandomNumberId" class="icon">
                     <h3>Ngẩu Nhiên Số</h3>
                 </button>
                 <button class="boxbutton center" id="button-c-diagram" onclick="ButtonClassDiagram()">
-                    <img src="board/ClassDiagram.gif" alt="ClassDiagram" class="icon">
+                    <img src="./ClassDiagram.gif" alt="ClassDiagram" class="icon">
                     <h3>Sơ Đồ Lớp</h3>
                 </button>
                 <h1>Thông Tin: </h1>
@@ -61,6 +61,6 @@
         	var receviepath = "<?php echo $receviepath; ?>"
         	//alert(receviepath);
         </script>
-        <script src="board/code.js"></script>
+        <script src="./code.js"></script>
     </body>
 </html>
