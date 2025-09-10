@@ -97,7 +97,7 @@ document.addEventListener("keydown", (event) => {
         startRandom();
     }
 });
-document.addEventListener("click", (event) => {
+canvas.addEventListener("click", (event) => {
     if (event.buttons === 1) {
         startRandom();
     }
