@@ -87,9 +87,19 @@ function ButtonClassDiagram() {
     menuDiv.style.display = "none";
 }
 //Event listenerss
+function startRandom() {
+    if (status === "paused") {
+        status = "started";
+    }
+};
 document.addEventListener("keydown", (event) => {
     if (event.code === "Space") {
-        status = "started";
+        startRandom();
+    }
+});
+document.addEventListener("click", (event) => {
+    if (event.buttons === 1) {
+        startRandom();
     }
 });
 function draw() {
