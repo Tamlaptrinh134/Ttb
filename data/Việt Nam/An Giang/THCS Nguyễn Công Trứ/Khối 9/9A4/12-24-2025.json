@@ -4,7 +4,7 @@
     "school": "THCS Nguyễn Công Trứ",
     "class": "9A4",
     "subject": "#All",
-    "totalstudents": 38,
+    "totalstudents": 39,
     "liststudents": [
         "Bảo",
         "Lạc",
@@ -13,7 +13,7 @@
         "Khang",
         "Phước",
         "Trân",
-        "Thư",
+        "H.Thư",
         "Năng",
         "Hoa",
         "M.Linh",
@@ -41,6 +41,9 @@
         "Nam",
         "Vy",
         "My",
-        "Nguyên"
+        "Nguyên",
+        "N.Thư",
+        "Huyền",
+        "Hoàng"
     ]
 }
